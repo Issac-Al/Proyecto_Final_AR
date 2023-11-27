@@ -569,6 +569,7 @@ MonoBehaviour:
   weaponCollider:
   - {fileID: 1069104011069196095}
   - {fileID: 8746885261857262078}
+  attackCD: 5
 --- !u!54 &-4522799254050956910
 Rigidbody:
   m_ObjectHideFlags: 0

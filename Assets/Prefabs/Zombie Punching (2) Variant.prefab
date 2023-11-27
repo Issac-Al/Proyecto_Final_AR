@@ -542,6 +542,7 @@ MonoBehaviour:
   stoppingDistance: 0.09
   weaponCollider:
   - {fileID: 6175817320663484650}
+  attackCD: 4
 --- !u!54 &-6910146090758829486
 Rigidbody:
   m_ObjectHideFlags: 0

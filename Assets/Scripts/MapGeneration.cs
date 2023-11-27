@@ -11,7 +11,7 @@ public class MapGeneration : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> chests;
     public int mapSize;
-    private Vector3 nextPiecePos = new Vector3 (0.37f, 0, 0.37f);
+    public float distanceBetweenSpace;
     private int randomPiece;
     int lastPiece = 3;
     private List<GameObject> corners, map;
@@ -20,6 +20,7 @@ public class MapGeneration : MonoBehaviour
 
     void Start()
     {
+        Vector3 nextPiecePos = new Vector3(distanceBetweenSpace, 0, distanceBetweenSpace);
         corners = new List<GameObject>();
         map = new List<GameObject>();
         InstantiateBoarders();
@@ -41,18 +42,19 @@ public class MapGeneration : MonoBehaviour
                 //Debug.Log(nextPiecePos);
                 map.Add(Instantiate(pieces[randomPiece], nextPiecePos, Quaternion.identity, imageTarget));
                 lastPiece = randomPiece;
-                nextPiecePos.x += 0.37f;
+                nextPiecePos.x += distanceBetweenSpace;
             }
-            nextPiecePos.z += 0.37f;
-            nextPiecePos.x = 0.37f;
+            nextPiecePos.z += distanceBetweenSpace;
+            nextPiecePos.x = distanceBetweenSpace;
         }
 
         DetectarEncierro();
-        //InstantiateEnemiesAndChests();
+        InstantiateEnemiesAndChests();
         int bloqueSalida = Random.Range(0, map.Count);
         Transform bloqueSalidaPos = map[bloqueSalida].transform;
         Destroy(map[bloqueSalida]);
         map[bloqueSalida] = Instantiate(pieces[13], bloqueSalidaPos.position, Quaternion.identity, imageTarget);
+
         
 
     }
@@ -60,17 +62,17 @@ public class MapGeneration : MonoBehaviour
     void InstantiateBoarders()
     {
         corners.Add(Instantiate(pieces[3], new Vector3(0, 0, 0), Quaternion.identity, imageTarget));
-        corners.Add(Instantiate(pieces[0], new Vector3((mapSize - 1) * 0.37f, 0, 0), Quaternion.identity, imageTarget));
-        corners.Add(Instantiate(pieces[4], new Vector3(0, 0, (mapSize - 1) * 0.37f), Quaternion.identity, imageTarget));
-        corners.Add(Instantiate(pieces[1], new Vector3((mapSize - 1) * 0.37f, 0, (mapSize - 1) * 0.37f), Quaternion.identity, imageTarget));
-        Vector3 boarderPosX = new Vector3(0.37f, 0, 0);
-        Vector3 boarderPosZ = new Vector3(0, 0, 0.37f);
+        corners.Add(Instantiate(pieces[0], new Vector3((mapSize - 1) * distanceBetweenSpace, 0, 0), Quaternion.identity, imageTarget));
+        corners.Add(Instantiate(pieces[4], new Vector3(0, 0, (mapSize - 1) * distanceBetweenSpace), Quaternion.identity, imageTarget));
+        corners.Add(Instantiate(pieces[1], new Vector3((mapSize - 1) * distanceBetweenSpace, 0, (mapSize - 1) * distanceBetweenSpace), Quaternion.identity, imageTarget));
+        Vector3 boarderPosX = new Vector3(distanceBetweenSpace, 0, 0);
+        Vector3 boarderPosZ = new Vector3(0, 0, distanceBetweenSpace);
         int randomPieceX = Random.Range(0, 8);
         int randomPieceZ = Random.Range(0, 8);
         corners.Add(Instantiate(pieces[7], boarderPosX, Quaternion.identity, imageTarget));
-        boarderPosX.x += 0.37f;
+        boarderPosX.x += distanceBetweenSpace;
         corners.Add(Instantiate(pieces[5], boarderPosZ, Quaternion.identity, imageTarget));
-        boarderPosZ.z += 0.37f;
+        boarderPosZ.z += distanceBetweenSpace;
 
         for (int j = 0; j < mapSize-2; j++)
         {
@@ -80,15 +82,15 @@ public class MapGeneration : MonoBehaviour
             }
             randomPieceZ = Random.Range(3, 5);
             corners.Add(Instantiate(pieces[randomPieceX], boarderPosX, Quaternion.identity, imageTarget));
-            boarderPosX.x += 0.37f;
+            boarderPosX.x += distanceBetweenSpace;
             corners.Add(Instantiate(pieces[randomPieceZ], boarderPosZ, Quaternion.identity, imageTarget));
-            boarderPosZ.z += 0.37f;
+            boarderPosZ.z += distanceBetweenSpace;
         }
 
-        boarderPosX.x = 0.37f;
-        boarderPosX.z = (mapSize - 1) * 0.37f;
-        boarderPosZ.z = 0.37f;
-        boarderPosZ.x = (mapSize - 1) * 0.37f;
+        boarderPosX.x = distanceBetweenSpace;
+        boarderPosX.z = (mapSize - 1) * distanceBetweenSpace;
+        boarderPosZ.z = distanceBetweenSpace;
+        boarderPosZ.x = (mapSize - 1) * distanceBetweenSpace;
 
         for (int i = 0; i < mapSize-2; i++)
         {
@@ -98,9 +100,9 @@ public class MapGeneration : MonoBehaviour
                 randomPieceX = Random.Range(0, 8);
             }
             corners.Add(Instantiate(pieces[6], boarderPosX, Quaternion.identity, imageTarget));
-            boarderPosX.x += 0.37f;
+            boarderPosX.x += distanceBetweenSpace;
             corners.Add(Instantiate(pieces[2], boarderPosZ, Quaternion.identity, imageTarget));
-            boarderPosZ.z += 0.37f;
+            boarderPosZ.z += distanceBetweenSpace;
         }
 
     }

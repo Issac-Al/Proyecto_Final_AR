@@ -15,6 +15,8 @@ public class BasicEnemy : MonoBehaviour
     public float stoppingDistance;
     private GameObject player;
     public List<Collider> weaponCollider;
+    public float attackCD;
+    private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,15 +41,19 @@ public class BasicEnemy : MonoBehaviour
         }
         else
         {
-            if(Mathf.Abs(Vector3.Distance(playerTransform.position, transform.position)) <= stoppingDistance)
+            if (Mathf.Abs(Vector3.Distance(playerTransform.position, transform.position)) <= stoppingDistance && timer < Time.time)
             {
                 Debug.Log("Atacando");
                 enemyAnimator.SetBool("Chasing", false);
                 enemyAnimator.SetBool("Attacking", true);
+                timer = Time.time + attackCD;
                 foreach (Collider weapon in weaponCollider)
                 {
                     weapon.enabled = true;
                 }
+                transform.LookAt(playerTransform);
+                Debug.Log("Primer timer" + timer);
+                Debug.Log("Primer tiempo" + Time.time);
             }
         }
 
@@ -82,6 +88,7 @@ public class BasicEnemy : MonoBehaviour
         if (currentHP <= 0)
         {
             enemyAnimator.SetBool("Alive", false);
+            this.enabled = false;
         }
     }
 
@@ -96,6 +103,14 @@ public class BasicEnemy : MonoBehaviour
     public void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    public void SetTimer()
+    {
+        timer = Time.time + attackCD;
+        enemyAnimator.SetBool("Chasing", false);
+        enemyAnimator.SetBool("Attacking", false);
+        transform.LookAt(playerTransform);
     }
 
 }
