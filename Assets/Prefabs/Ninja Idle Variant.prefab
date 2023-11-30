@@ -700,7 +700,7 @@ MonoBehaviour:
   currentHP: 0
   totalHP: 60
   speed: 0.05
-  stoppingDistance: 0.85
+  stoppingDistance: 0.12
   weaponCollider:
   - {fileID: 3158985203551211089}
   - {fileID: 7713654050894706046}

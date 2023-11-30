@@ -977,7 +977,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd97cf37103bd004898ab92760e82f5a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7346355292877121276}
+      addedObject: {fileID: 5011120320266714895}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd97cf37103bd004898ab92760e82f5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8763965338353541745}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd97cf37103bd004898ab92760e82f5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6734362286722137842}
   m_SourcePrefab: {fileID: 100100000, guid: dd97cf37103bd004898ab92760e82f5a, type: 3}
 --- !u!4 &5961872769541216555 stripped
 Transform:
@@ -989,8 +995,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd97cf37103bd004898ab92760e82f5a, type: 3}
   m_PrefabInstance: {fileID: 6140212580031495872}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7346355292877121276
+--- !u!65 &5011120320266714895
 BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482653619398394769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.34, y: 3.8957548, z: 3.09}
+  m_Center: {x: -0.001020193, y: 1.8787861, z: 2.49}
+--- !u!136 &8763965338353541745
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1007,6 +1034,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5076587, y: 3.8957548, z: 2.2474473}
+  serializedVersion: 2
+  m_Radius: 0.82
+  m_Height: 3.8957548
+  m_Direction: 1
   m_Center: {x: -0.001020193, y: 1.8787861, z: 0.23487674}
+--- !u!114 &6734362286722137842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482653619398394769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde5244dd44c2324cb012231d51862ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: {fileID: 0}

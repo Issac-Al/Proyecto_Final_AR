@@ -12,15 +12,15 @@ public class Damager : MonoBehaviour
         //Debug.Log("Trigger!");
         if(other.gameObject.tag == "Player" && !isPlayer)
         {
-            //other.gameObject.GetComponent<PlayerMovement>().GetHurt(damageAmount);
-            Debug.Log("PlayerDamaged");
+            other.gameObject.GetComponent<PlayerMovement>().GetHurt(damageAmount);
+            //Debug.Log("PlayerDamaged");
         }
         else
         {
             if(other.gameObject.tag == "Enemy" && isPlayer)
             {
                 other.gameObject.GetComponent<BasicEnemy>().GetHurt(damageAmount);
-                Debug.Log("EnemyDamaged");
+                //Debug.Log("EnemyDamaged");
             }
         }
     }

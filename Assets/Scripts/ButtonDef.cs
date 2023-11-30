@@ -10,7 +10,13 @@ public class MyButton : Button
         base.OnPointerDown(eventData);
         if (playerAnimator == null)
             playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        playerAnimator.SetBool("Blocking", true);
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().ReturnStamina() > 0)
+        {
+            playerAnimator.SetBool("Blocking", true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetDefending(true);
+        }
+        else
+            playerAnimator.SetBool("Blocking", false);
         //show text
     }
 
@@ -20,6 +26,7 @@ public class MyButton : Button
         if (playerAnimator == null)
             playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         playerAnimator.SetBool("Blocking", false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().SetDefending(false);
         //hide text
     }
 }

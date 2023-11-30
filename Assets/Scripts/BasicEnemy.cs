@@ -17,6 +17,8 @@ public class BasicEnemy : MonoBehaviour
     public List<Collider> weaponCollider;
     public float attackCD;
     private float timer = 0;
+    public float dmgCD = 0.35f;
+    private float dmgTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +74,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == ("Player"))
+        if(collision.gameObject.tag == ("Enemy"))
         {
             Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
@@ -80,7 +82,11 @@ public class BasicEnemy : MonoBehaviour
 
     public void GetHurt(int damage)
     {
-        currentHP -= damage;
+        if (dmgTimer < Time.time)
+        {
+            currentHP -= damage;
+            dmgTimer = Time.time + dmgCD;
+        }
     }
 
     private void Death()
